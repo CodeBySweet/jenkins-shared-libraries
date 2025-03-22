@@ -1,5 +1,5 @@
 def call (String currentBuild) {
-    if (currentBuild.status == "SUCCESS"){
+    if (currentBuild.result == "SUCCESS"){
         
             emailext attachLog: true, 
                      body: "Pipeline ran successfully, check it here ${JOB_URL}", 
@@ -7,7 +7,7 @@ def call (String currentBuild) {
                      to: "testingdevops77@gmail.com"
 
     }
-    else if (currentBuild.status == "FAILURE"){
+    else if (currentBuild.result == "FAILURE"){
             emailext attachLog: true, 
                      body: "Pipeline Failed, check it here ${JOB_URL}", 
                      subject: "FAILED JOB: job name: ${JOB_NAME}, build number ${BUILD_NUMBER}", 
